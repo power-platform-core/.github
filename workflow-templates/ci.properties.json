@@ -1,0 +1,5 @@
+{
+  "name": "CI",
+  "description": "Lint, test, and build a Power Platform Core microservice",
+  "categories": ["continuous-integration"]
+}

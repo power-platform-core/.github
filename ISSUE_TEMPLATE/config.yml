@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a Question / Start a Discussion
+    url: https://github.com/orgs/power-platform-core/discussions
+    about: Use GitHub Discussions for questions, ideas, and general conversation.
+  - name: Security Vulnerability
+    url: https://github.com/power-platform-core/.github/security/advisories/new
+    about: Report a security vulnerability privately using GitHub Security Advisories.
