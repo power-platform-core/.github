@@ -2,7 +2,7 @@
 
 **Power Platform Core** is a production-grade, modular microservice backend platform built with FastAPI. It enables developers to assemble scalable backend systems from pre-built, independent services — like building blocks.
 
-```
+```text
 Internet → Nginx → API Gateway (:9000) → 35+ Microservices
                                         → PostgreSQL (per-service DB)
                                         → Redis (per-service DB)
@@ -14,7 +14,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ## 🏗️ Architecture Principles
 
 | Principle | Details |
-|---|---|
+| --- | --- |
 | **Microservices** | Each service owns its data, migrations, and deployment |
 | **Shared Core Library** | `power-fastapi-core` — eliminates duplication across all services |
 | **API Gateway** | Single entry point, catch-all proxy with 503/504 handling |
@@ -31,7 +31,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 🔧 Foundation
 
 | Repository | Description |
-|---|---|
+| --- | --- |
 | **power-fastapi-core** | Shared library: BaseRepository, responses, exceptions, JWT, Redis, cache, middleware, decorators |
 | **power-service-fastapi-template** | Starter template for new services |
 | **power-fastapi-gateway** | API Gateway — reverse proxy routing all `/api/v1/*` traffic to upstream services |
@@ -42,7 +42,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 🔐 Identity & Access
 
 | Repository | Port | Tables |
-|---|---|---|
+| --- | --- | --- |
 | **power-auth-fastapi-service** | 8000 | users, sessions, refresh_tokens, password_resets, verification_tokens, social_accounts, api_keys |
 | **power-user-fastapi-service** | 8001 | user_profiles, user_settings, user_activity |
 
@@ -51,7 +51,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 🛒 Commerce
 
 | Repository | Port | Tables |
-|---|---|---|
+| --- | --- | --- |
 | **power-product-fastapi-service** | 8002 | brands, products, product_variants, product_images |
 | **power-cart-fastapi-service** | 8003 | carts, cart_items |
 | **power-order-fastapi-service** | 8004 | orders, order_items |
@@ -64,7 +64,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 📝 Content & Media
 
 | Repository | Port | Tables |
-|---|---|---|
+| --- | --- | --- |
 | **power-post-fastapi-service** | — | posts, post_categories |
 | **power-category-fastapi-service** | — | categories |
 | **power-tag-fastapi-service** | — | tags, entity_tags |
@@ -79,7 +79,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 💬 Social & Community
 
 | Repository | Port | Tables |
-|---|---|---|
+| --- | --- | --- |
 | **power-social-fastapi-service** | 8012 | follows |
 | **power-social-interaction-fastapi-service** | 8008 | comments, likes, ratings, views |
 | **power-chat-fastapi-service** | — | chat_rooms, chat_messages, chat_participants |
@@ -90,7 +90,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 🤖 AI & ML Ecosystem
 
 | Repository | Description |
-|---|---|
+| --- | --- |
 | **power-ai-fastapi-service** | LLM orchestration — OpenAI / OpenRouter / DeepSeek / Mistral, chat, streaming, function calling, tool registry, cost tracking |
 | **power-vector-fastapi-service** | Vector storage & retrieval — embeddings, chunking, Qdrant, collection management |
 | **power-websearch-fastapi-service** | Web search adapters — Tavily / Serper / Brave, result normalization, caching |
@@ -100,7 +100,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 📡 Notifications & Communication
 
 | Repository | Port | Description |
-|---|---|---|
+| --- | --- | --- |
 | **power-notification-fastapi-service** | 8006 | Notification inbox, preferences (email/sms/push) |
 | **power-notifier-fastapi-service** | — | Multi-channel delivery orchestration |
 | **power-email-fastapi-service** | — | SMTP / SendGrid / AWS SES email delivery, templates |
@@ -111,7 +111,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ### 🧠 Platform Intelligence
 
 | Repository | Description |
-|---|---|
+| --- | --- |
 | **power-analytics-fastapi-service** | Event tracking, daily stats, dashboards |
 | **power-search-fastapi-service** | Full-text search (Meilisearch / Elasticsearch adapter) |
 | **power-recommendation-fastapi-service** | Personalized content and product recommendations |
@@ -123,7 +123,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ## 🗺️ Gateway Route Map
 
 | Path Prefix | Upstream Service | Port |
-|---|---|---|
+| --- | --- | --- |
 | `/api/v1/auth` | power-auth-fastapi-service | 8000 |
 | `/api/v1/users` | power-user-fastapi-service | 8001 |
 | `/api/v1/products` | power-product-fastapi-service | 8002 |
@@ -150,7 +150,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ## 🔢 Message Code Registry
 
 | Range | Service |
-|---|---|
+| --- | --- |
 | 1000–1999 | platform / power-fastapi-core |
 | 2000–2999 | power-auth-fastapi-service |
 | 3000–3999 | power-user-fastapi-service |
@@ -180,7 +180,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ## 🛠️ Technology Stack
 
 | Layer | Technologies |
-|---|---|
+| --- | --- |
 | **Framework** | FastAPI, Pydantic v2, pydantic-settings |
 | **ORM** | SQLAlchemy (async), Alembic |
 | **Database** | PostgreSQL (per-service), SQLite (tests) |
@@ -202,7 +202,7 @@ Internet → Nginx → API Gateway (:9000) → 35+ Microservices
 ## 🧪 Test Coverage
 
 | Metric | Value |
-|---|---|
+| --- | --- |
 | Total tests | 371+ |
 | Test isolation | SQLite in-memory (no external deps) |
 | Auth bypass | `X-Test-Admin` header (TEST_MODE only) |
@@ -221,7 +221,7 @@ pip install -e ../power-fastapi-core
 Key modules:
 
 | Module | Purpose |
-|---|---|
+| --- | --- |
 | `power_core.app` | `create_app()` factory — auto-wires health, middleware, lifecycle |
 | `power_core.repository.base` | `BaseRepository[T]` — CRUD, pagination, search, bulk ops, upsert |
 | `power_core.responses` | `DataResponse`, `PaginatedResponse`, `ErrorResponse` |
@@ -257,7 +257,7 @@ uvicorn main:app --reload --port 8000
 
 ## 📁 Standard Service Structure
 
-```
+```text
 power-<name>-fastapi-service/
 ├── main.py                         # FastAPI app entry point
 ├── app/
